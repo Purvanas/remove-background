@@ -4,7 +4,7 @@ Une interface web simple pour détourer une image avec le modèle open source `r
 
 **Démo : [bg.purvanas.fr](https://bg.purvanas.fr)**
 
-Le navigateur envoie l’image au serveur, qui lance `rembg` dans un processus isolé et renvoie le PNG produit. Le service borne le poids des entrées, le nombre de traitements simultanés et la durée d’un processus. Les fichiers intermédiaires utilisent des noms aléatoires et sont supprimés à la fin du traitement, en cas d’échec ou si le client interrompt la requête.
+Le navigateur envoie l’image au serveur, qui lance `rembg` dans un processus séparé et renvoie le PNG produit. Le service borne le poids des entrées, le nombre de traitements simultanés et la durée d’un processus. Les fichiers intermédiaires utilisent des noms aléatoires et sont supprimés à la fin du traitement, en cas d’échec ou si le client interrompt la requête.
 
 ## Points techniques
 
