@@ -1,0 +1,8 @@
+node_modules/
+errors.json
+*.log
+.env
+.env.*
+!.env.example
+coverage/
+*.tmp

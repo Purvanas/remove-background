@@ -1,61 +1,37 @@
 # Remove Background
 
-**Free AI background removal** — Remove the background from any image instantly. Full HD quality, unlimited, no account required.
+Une interface web simple pour détourer une image avec le modèle open source `rembg`, puis télécharger le résultat en PNG transparent.
 
-**[Use it now → bg.purvanas.fr](https://bg.purvanas.fr)**
+**Démo : [bg.purvanas.fr](https://bg.purvanas.fr)**
 
-A self-hosted, free alternative to remove.bg.
+Le navigateur envoie l’image au serveur, qui lance `rembg` dans un processus séparé et renvoie le PNG produit. Le service borne le poids des entrées, le nombre de traitements simultanés et la durée d’un processus. Les fichiers intermédiaires utilisent des noms aléatoires et sont supprimés à la fin du traitement, en cas d’échec ou si le client interrompt la requête.
 
-## Features
+## Points techniques
 
-- **AI-powered** — Uses [rembg](https://github.com/danielgatis/rembg) (U2-Net model) for precise edge detection
-- **Full HD** — Original resolution preserved (remove.bg charges for HD)
-- **Unlimited** — No daily limits, no watermarks, no account
-- **Privacy** — Images are processed server-side and immediately deleted after processing
-- **Works on** — Portraits, products, animals, objects, logos
+- validation de la signature binaire des formats JPEG, PNG, WebP, GIF, BMP et TIFF ;
+- moteur `rembg` configurable via l’environnement, sans chemin propre à une machine ;
+- une tâche simultanée par défaut pour protéger un petit serveur ;
+- arrêt du processus si le délai est dépassé ou si le client se déconnecte ;
+- journaux techniques conservés hors du dépôt et route de lecture masquée sans jeton d’exploitation.
 
-## How it works
+## Installation
 
-1. Upload an image (drag & drop or click)
-2. Click "Supprimer le fond"
-3. Wait 10-30 seconds (AI processing)
-4. Download the PNG with transparent background
-
-## Comparison with remove.bg
-
-| Feature | bg.purvanas.fr | remove.bg |
-|---------|---------------|-----------|
-| Price | **Free** | Free (low-res) / $1.99+ per HD image |
-| HD quality | **Yes, always** | Paid only |
-| Daily limit | **None** | 1 free/day (low-res) |
-| Account required | **No** | Yes |
-| Self-hostable | **Yes** | No |
-
-## Tech Stack
-
-- **Backend**: Node.js, Express
-- **AI engine**: [rembg](https://github.com/danielgatis/rembg) (Python, U2-Net)
-- **Frontend**: Vanilla HTML/CSS/JS
-- **Hosting**: Self-hosted on Ubuntu Server
-
-## Self-hosting
+Prérequis : Node.js 22+, Python 3 et [`rembg`](https://github.com/danielgatis/rembg). Selon l’installation choisie, le premier traitement peut télécharger un modèle et prendre sensiblement plus de temps.
 
 ```bash
-git clone https://github.com/Purvanas/remove-background.git
-cd remove-background
-npm install
-pip install rembg[cli]
-node server.js
+cp .env.example .env
+npm ci
+npm start
 ```
 
-Requires Python 3 and rembg installed. First run downloads the AI model (~170 MB).
+Les variables ne sont pas chargées automatiquement depuis `.env` : configure-les dans le shell ou le gestionnaire de processus. Par défaut, l’application écoute sur `127.0.0.1:4100` pour être publiée derrière un reverse proxy. Les dossiers temporaires et de journaux peuvent être séparés du code avec `REMBG_TMP_DIR` et `REMBG_RUNTIME_DIR`.
 
-## License
+## Périmètre et confidentialité
 
-MIT
+Les images sont traitées temporairement sur le serveur : ce traitement n’est pas réalisé dans le navigateur et ne fournit pas de chiffrement de bout en bout. Le dépôt public exclut les images, journaux, identifiants d’analytics, paramètres publicitaires et configuration de production.
 
-## Links
+La qualité du détourage dépend du modèle utilisé par `rembg`, du sujet et de l’image d’origine. Ce service personnel ne fournit pas de garantie de disponibilité.
 
-- **Live demo**: [bg.purvanas.fr](https://bg.purvanas.fr)
-- **Author**: [Purvanas](https://purvanas.fr)
-- **Other tools**: [Universal Downloader](https://dl.purvanas.fr) · [Converter](https://convert.purvanas.fr) · [PDF Tools](https://pdf.purvanas.fr) · [QR Generator](https://qr.purvanas.fr) · [FileDrop](https://drop.purvanas.fr)
+## Licence
+
+Le code de cette interface est distribué sous licence MIT. `rembg` et ses modèles conservent leurs propres licences et conditions d’utilisation.
