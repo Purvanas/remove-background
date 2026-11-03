@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supprimer le fond d'une image gratuitement — IA, HD, sans limite</title>
+  <meta name="description" content="Supprimer le fond d'une image gratuitement par IA. Detourage photo automatique, fond transparent PNG, qualite HD conservee. Alternative gratuite a remove.bg, sans inscription, sans limite.">
+  <meta name="keywords" content="supprimer fond image, remove background, detourage photo gratuit, fond transparent, supprimer arriere plan, remove bg, fond blanc photo produit, detourage automatique IA">
+  <meta property="og:title" content="Supprimer le fond d'une image gratuitement — IA, HD, sans limite">
+  <meta property="og:description" content="Suppression de fond automatique par IA. Qualite HD, format PNG transparent. Gratuit et sans limite.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bg.purvanas.fr">
+  <link rel="canonical" href="https://bg.purvanas.fr">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0a0a'/><circle cx='50' cy='45' r='22' fill='none' stroke='%23e040fb' stroke-width='5' stroke-dasharray='12 8'/><path d='M40 75h20' stroke='%23e040fb' stroke-width='5' stroke-linecap='round'/></svg>">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Supprimer le fond",
+    "url": "https://bg.purvanas.fr",
+    "description": "Suppression de fond automatique par intelligence artificielle. Qualite HD, format PNG transparent. Gratuit, sans inscription, sans limite.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Comment supprimer le fond d'une image ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Deposez votre image dans la zone de depot ou cliquez pour la selectionner. Cliquez sur Supprimer le fond. L'IA traite l'image en 10 a 30 secondes. Telechargez le resultat en PNG avec fond transparent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "C'est gratuit ? Il y a des limites ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "100% gratuit. Pas d'inscription, pas d'abonnement, pas de limite de nombre d'images. La resolution HD est conservee sans filigrane."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle qualite pour l'image de sortie ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "L'image de sortie conserve la resolution originale de votre image. Le format est PNG avec transparence alpha. Aucune perte de qualite, aucun filigrane."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels types d'images sont supportes ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tous les formats d'image courants sont supportes : JPEG, PNG, WebP, BMP, TIFF. L'image de sortie est toujours un PNG avec fond transparent."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mes images sont-elles conservees ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Non. Votre image est envoyee au serveur pour le traitement IA, puis immediatement supprimee apres generation du resultat. Aucune image n'est stockee ni partagee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "C'est quoi la difference avec remove.bg ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "remove.bg limite la resolution gratuite a 0.25 megapixels et facture la HD. bg.purvanas.fr est 100% gratuit, conserve la resolution originale HD, sans filigrane et sans limite de nombre d'images."
+        }
+      }
+    ]
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      width: 100%;
+      padding: 2rem 1rem 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, #1a0a1f 0%, #0a0a0a 100%);
+    }
+    .header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; }
+    .header h1 .accent { color: #e040fb; }
+    .header p { color: #888; font-size: 0.85rem; margin-top: 0.3rem; }
+
+    .container { width: 100%; max-width: 700px; padding: 0 1rem 2rem; }
+
+    /* ===== DROP ZONE ===== */
+    .dropzone {
+      margin-top: 1.5rem;
+      border: 2px dashed #2a2a2a;
+      border-radius: 16px;
+      padding: 3rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: #141414;
+    }
+    .dropzone:hover, .dropzone.dragover {
+      border-color: #e040fb;
+      background: #1a0a1f;
+    }
+    .dropzone-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      opacity: 0.6;
+    }
+    .dropzone-text { color: #888; font-size: 0.9rem; }
+    .dropzone-text strong { color: #e040fb; }
+    .dropzone-hint { color: #555; font-size: 0.75rem; margin-top: 0.4rem; }
+
+    /* ===== FEATURES ===== */
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+    .feature {
+      background: #141414;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 1rem 0.8rem;
+      text-align: center;
+    }
+    .feature-icon { font-size: 1.3rem; margin-bottom: 0.4rem; }
+    .feature-title { font-size: 0.8rem; font-weight: 600; color: #ccc; margin-bottom: 0.2rem; }
+    .feature-desc { font-size: 0.7rem; color: #666; }
+
+    /* ===== WORKSPACE ===== */
+    .workspace {
+      display: none;
+      margin-top: 1.5rem;
+    }
+    .workspace.visible { display: block; }
+
+    .preview-single {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #141414;
+      border: 1px solid #1e1e1e;
+    }
+    .preview-single img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+    .preview-label {
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      color: #666;
+      text-align: center;
+    }
+
+    .btn-remove {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      padding: 0.9rem 1.5rem;
+      background: #e040fb;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-remove:hover { background: #c030db; }
+    .btn-remove:active { transform: scale(0.98); }
+    .btn-remove:disabled {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ===== LOADING ===== */
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .loading.visible { display: block; }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #1e1e1e;
+      border-top: 4px solid #e040fb;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 1rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { color: #888; font-size: 0.85rem; }
+
+    /* ===== COMPARISON ===== */
+    .comparison {
+      display: none;
+      margin-top: 1.5rem;
+    }
+    .comparison.visible { display: block; }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .comparison-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #141414;
+      border: 1px solid #1e1e1e;
+    }
+    .comparison-card img {
+      width: 100%;
+      max-height: 350px;
+      object-fit: contain;
+      display: block;
+    }
+    .comparison-card-label {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.75rem;
+      color: #666;
+      text-align: center;
+      font-weight: 600;
+    }
+    .checkerboard {
+      background-image:
+        linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
+        linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
+        linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+      background-color: #111;
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .btn-download {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      background: #e040fb;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s;
+    }
+    .btn-download:hover { background: #c030db; }
+    .btn-reset {
+      padding: 0.85rem 1rem;
+      background: #141414;
+      color: #888;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-reset:hover { border-color: #e040fb; color: #ccc; }
+
+    /* ===== ERROR ===== */
+    .error-msg {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.8rem 1rem;
+      background: rgba(244,67,54,0.08);
+      border: 1px solid rgba(244,67,54,0.3);
+      border-radius: 10px;
+      color: #ef5350;
+      font-size: 0.85rem;
+      text-align: center;
+    }
+    .error-msg.visible { display: block; }
+
+    /* ===== CROSS-LINKS ===== */
+    .cross-links {
+      display: flex; gap: 0.6rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;
+    }
+    .cross-link {
+      padding: 0.5rem 1rem; border: 1px solid #1e1e1e; border-radius: 10px; background: #141414;
+      color: #888; font-size: 0.75rem; text-decoration: none; transition: all 0.2s;
+    }
+    .cross-link:hover { border-color: #e040fb; color: #ccc; }
+    .cross-link span { color: #e040fb; }
+
+    /* ===== SEO CONTENT ===== */
+    .seo-section {
+      width: 100%;
+      max-width: 700px;
+      padding: 2rem 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid #1e1e1e;
+    }
+    .seo-section h2 { font-size: 1.1rem; font-weight: 600; color: #ccc; margin-bottom: 0.8rem; }
+    .seo-section h3 { font-size: 0.9rem; font-weight: 600; color: #999; margin: 1.2rem 0 0.4rem; }
+    .seo-section p { font-size: 0.8rem; color: #555; line-height: 1.6; margin-bottom: 0.8rem; }
+    .faq { margin-top: 1.5rem; }
+    .faq details { margin-bottom: 0.6rem; border: 1px solid #1e1e1e; border-radius: 8px; padding: 0; }
+    .faq summary {
+      padding: 0.7rem 1rem; font-size: 0.8rem; font-weight: 600; color: #aaa; cursor: pointer;
+      list-style: none; display: flex; justify-content: space-between; align-items: center;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: '+'; color: #e040fb; font-size: 1rem; }
+    .faq details[open] summary::after { content: '-'; }
+    .faq details p { padding: 0 1rem 0.7rem; margin: 0; }
+
+    .footer { margin-top: auto; padding: 1.5rem; text-align: center; color: #333; font-size: 0.7rem; }
+
+    /* ===== BOTTOM BAR ===== */
+    .bottom-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; display: flex; justify-content: center;
+      gap: 0.5rem; padding: 10px; z-index: 9999;
+    }
+    .bottom-btn {
+      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none; transition: transform 0.15s;
+      box-shadow: 0 2px 8px rgba(0,0,0,.3);
+    }
+    .bottom-btn:hover { transform: scale(1.05); }
+    .bottom-btn-kofi { background: #ff5e5b; color: #fff; }
+    .bottom-btn-bug { background: #141414; color: #888; border: 1px solid #2a2a2a; }
+    .bottom-btn-bug:hover { color: #ccc; border-color: #e040fb; }
+
+    /* ===== BUG MODAL ===== */
+    .bug-modal {
+      display: none; position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
+      background: #141414; border: 1px solid #2a2a2a; border-radius: 14px; padding: 16px;
+      width: 320px; z-index: 10000; box-shadow: 0 8px 32px rgba(0,0,0,.5);
+    }
+    .bug-modal.visible { display: block; }
+    .bug-modal h3 { font-size: 0.85rem; color: #ccc; margin-bottom: 8px; }
+    .bug-modal textarea {
+      width: 100%; height: 70px; background: #0a0a0a; border: 1px solid #2a2a2a; border-radius: 8px;
+      color: #ccc; padding: 8px; font-size: 12px; resize: none; font-family: -apple-system, sans-serif;
+      margin-bottom: 8px; outline: none;
+    }
+    .bug-modal textarea:focus { border-color: #e040fb; }
+    .bug-modal-info { font-size: 10px; color: #444; margin-bottom: 8px; }
+    .bug-modal button {
+      width: 100%; padding: 8px; background: #e040fb; color: #fff; border: none; border-radius: 8px;
+      font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .bug-modal button:hover { background: #c030db; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.5rem; }
+      .features { grid-template-columns: 1fr; gap: 0.5rem; }
+      .feature { padding: 0.8rem 0.5rem; }
+      .comparison-grid { grid-template-columns: 1fr; }
+      .result-actions { flex-direction: column; }
+      .btn-reset { width: 100%; }
+      .dropzone { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1><span class="accent">Supprimer le fond</span></h1>
+    <p>Suppression de fond automatique par IA — gratuit, HD, sans limite</p>
+  </div>
+
+  <div class="container">
+    <!-- DROP ZONE -->
+    <div class="dropzone" id="dropzone" role="button" tabindex="0" aria-controls="file-input">
+      <div class="dropzone-icon">&#128444;</div>
+      <div class="dropzone-text"><strong>Deposez une image</strong> ou cliquez pour selectionner</div>
+      <div class="dropzone-hint">JPEG, PNG, WebP, BMP, TIFF</div>
+      <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp,image/tiff" style="display:none">
+    </div>
+
+    <!-- FEATURES (hidden after upload) -->
+    <div class="features" id="features">
+      <div class="feature">
+        <div class="feature-icon">&#129302;</div>
+        <div class="feature-title">IA avancee</div>
+        <div class="feature-desc">Suppression precise des contours</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#128248;</div>
+        <div class="feature-title">Full HD</div>
+        <div class="feature-desc">Resolution originale conservee</div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#127873;</div>
+        <div class="feature-title">Gratuit</div>
+        <div class="feature-desc">Sans limite, sans inscription</div>
+      </div>
+    </div>
+
+    <!-- WORKSPACE: original preview + remove button -->
+    <div class="workspace" id="workspace">
+      <div class="preview-single">
+        <img id="preview-img" src="" alt="Apercu de l'image originale">
+        <div class="preview-label">Image originale</div>
+      </div>
+      <button class="btn-remove" id="btn-remove" onclick="removeBg()">Supprimer le fond</button>
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading" id="loading" role="status" aria-live="polite">
+      <div class="spinner"></div>
+      <div class="loading-text">Traitement en cours... (10-30 secondes)</div>
+    </div>
+
+    <!-- ERROR -->
+    <div class="error-msg" id="error-msg" role="alert"></div>
+
+    <!-- COMPARISON: before / after -->
+    <div class="comparison" id="comparison">
+      <div class="comparison-grid">
+        <div class="comparison-card">
+          <img id="compare-original" src="" alt="Image originale">
+          <div class="comparison-card-label">Avant</div>
+        </div>
+        <div class="comparison-card checkerboard">
+          <img id="compare-result" src="" alt="Image avec fond supprime">
+          <div class="comparison-card-label" style="background:#141414;">Apres</div>
+        </div>
+      </div>
+      <div class="result-actions">
+        <a class="btn-download" id="btn-download" download="sans-fond.png">Telecharger le PNG transparent</a>
+        <button class="btn-reset" onclick="resetApp()">Nouvelle image</button>
+      </div>
+    </div>
+
+    <!-- CROSS LINKS -->
+    <div class="cross-links">
+      <a class="cross-link" href="https://dl.purvanas.fr"><span>&#11015;</span> Telecharger une video</a>
+      <a class="cross-link" href="https://convert.purvanas.fr"><span>&#9881;</span> Convertir un fichier</a>
+      <a class="cross-link" href="https://pdf.purvanas.fr"><span>&#128196;</span> Outils PDF</a>
+      <a class="cross-link" href="https://qr.purvanas.fr"><span>&#9638;</span> Generateur QR Code</a>
+    </div>
+  </div>
+
+  <!-- SEO CONTENT -->
+  <div class="seo-section">
+    <h2>Supprimer le fond d'une image gratuitement</h2>
+
+    <h3>Suppression de fond par intelligence artificielle</h3>
+    <p>bg.purvanas.fr utilise rembg, un modele d'intelligence artificielle specialise dans la segmentation d'image. L'IA detecte automatiquement le sujet principal (personne, animal, objet, produit) et supprime l'arriere-plan avec precision, meme sur des contours complexes comme les cheveux ou la fourrure. Le resultat est un PNG avec transparence alpha, pret a etre utilise pour du montage photo, un site web ou une marketplace.</p>
+
+    <h3>Alternative gratuite a remove.bg</h3>
+    <p>remove.bg est l'outil le plus connu pour supprimer le fond d'une image, mais il limite la qualite gratuite a 0.25 megapixels (environ 625x400 pixels). Pour obtenir la resolution HD, il faut payer des credits. bg.purvanas.fr est une alternative 100% gratuite qui conserve la resolution originale de votre image, sans filigrane, sans inscription et sans limite de nombre de traitements. Le modele IA tourne sur notre propre serveur.</p>
+
+    <h3>Photos de produits sur fond blanc</h3>
+    <p>Pour les vendeurs e-commerce (Amazon, Leboncoin, Vinted, Etsy, Shopify), les photos de produits detoures sur fond blanc ou transparent sont essentielles. bg.purvanas.fr permet de detourer vos produits automatiquement : deposez la photo, supprimez le fond, et obtenez un PNG transparent que vous pouvez placer sur n'importe quel fond. Ideal pour creer des visuels professionnels sans logiciel de retouche.</p>
+
+    <h3>Comment supprimer le fond d'une image</h3>
+    <p>1. Deposez votre image dans la zone de depot ou cliquez pour la selectionner depuis votre appareil. 2. Cliquez sur le bouton "Supprimer le fond". 3. Patientez 10 a 30 secondes pendant le traitement IA. 4. Comparez le resultat avant/apres. 5. Telechargez le PNG transparent. C'est tout. Aucune inscription requise, aucun logiciel a installer. Fonctionne sur ordinateur, tablette et telephone.</p>
+
+    <h3>Confidentialite</h3>
+    <p>Votre image est envoyee a notre serveur uniquement pour le traitement par le modele IA. Une fois le resultat genere, l'image originale et le resultat sont immediatement supprimes du serveur. Aucune image n'est stockee, archivee ou partagee. Nous ne conservons aucune donnee personnelle liee a vos images.</p>
+
+    <div class="faq">
+      <details>
+        <summary>Comment supprimer le fond d'une image ?</summary>
+        <p>Deposez votre image dans la zone de depot (ou cliquez pour la selectionner), puis cliquez sur "Supprimer le fond". L'IA traite l'image en 10 a 30 secondes. Vous pouvez ensuite comparer le resultat avant/apres et telecharger le PNG avec fond transparent.</p>
+      </details>
+      <details>
+        <summary>C'est gratuit ? Il y a des limites ?</summary>
+        <p>Oui, c'est 100% gratuit. Pas d'inscription, pas d'abonnement, pas de limite de nombre d'images. La resolution HD est conservee integralement, sans filigrane. Le service est auto-heberge et finance par la communaute.</p>
+      </details>
+      <details>
+        <summary>Quelle qualite pour l'image de sortie ?</summary>
+        <p>L'image de sortie conserve la resolution originale de votre image. Le format est PNG avec canal alpha (transparence). Aucune compression supplementaire n'est appliquee, aucun filigrane n'est ajoute. La qualite est equivalente ou superieure aux outils payants.</p>
+      </details>
+      <details>
+        <summary>Quels types d'images sont supportes ?</summary>
+        <p>Tous les formats d'image courants : JPEG, PNG, WebP, BMP, TIFF. L'image de sortie est toujours un PNG avec fond transparent, quel que soit le format d'entree.</p>
+      </details>
+      <details>
+        <summary>Mes images sont-elles conservees ?</summary>
+        <p>Non. Votre image est envoyee au serveur pour le traitement IA, puis immediatement supprimee apres generation du resultat. Aucune image n'est stockee, archivee ou partagee. Nous ne conservons aucune donnee personnelle.</p>
+      </details>
+      <details>
+        <summary>C'est quoi la difference avec remove.bg ?</summary>
+        <p>remove.bg limite la resolution gratuite a 0.25 megapixels (environ 625x400 pixels) et facture la HD via des credits. bg.purvanas.fr est 100% gratuit, conserve la resolution originale HD, n'ajoute aucun filigrane et n'impose aucune limite de nombre d'images traitees.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="footer">bg.purvanas.fr</div>
+
+  <script>
+    var selectedFile = null;
+    var resultBlobUrl = null;
+    var lastError = null;
+
+    var dropzone = document.getElementById('dropzone');
+    var fileInput = document.getElementById('file-input');
+    var features = document.getElementById('features');
+    var workspace = document.getElementById('workspace');
+    var loading = document.getElementById('loading');
+    var comparison = document.getElementById('comparison');
+    var errorMsg = document.getElementById('error-msg');
+
+    // Drop zone events
+    dropzone.addEventListener('click', function() { fileInput.click(); });
+    dropzone.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileInput.click(); }
+    });
+
+    dropzone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      dropzone.classList.add('dragover');
+    });
+
+    dropzone.addEventListener('dragleave', function() {
+      dropzone.classList.remove('dragover');
+    });
+
+    dropzone.addEventListener('drop', function(e) {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', function() {
+      if (fileInput.files && fileInput.files[0]) {
+        handleFile(fileInput.files[0]);
+      }
+    });
+
+    function handleFile(file) {
+      if (!file.type.startsWith('image/')) {
+        showError('Veuillez selectionner un fichier image (JPEG, PNG, WebP, BMP, TIFF).');
+        return;
+      }
+      if (file.size > 50 * 1024 * 1024) {
+        showError('Cette image depasse la limite de 50 Mo.');
+        return;
+      }
+      selectedFile = file;
+      hideError();
+
+      // Show original preview
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('preview-img').src = e.target.result;
+        dropzone.style.display = 'none';
+        features.style.display = 'none';
+        workspace.classList.add('visible');
+        comparison.classList.remove('visible');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeBg() {
+      if (!selectedFile) return;
+
+      var btn = document.getElementById('btn-remove');
+      btn.disabled = true;
+      workspace.classList.remove('visible');
+      loading.classList.add('visible');
+      comparison.classList.remove('visible');
+      hideError();
+
+      fetch('/api/remove-bg', {
+        method: 'POST',
+        headers: { 'Content-Type': selectedFile.type },
+        body: selectedFile,
+      })
+      .then(function(response) {
+        if (!response.ok) {
+          return response.json().catch(function() { return {}; }).then(function(data) {
+            throw new Error(data.error || 'Erreur serveur (' + response.status + ')');
+          });
+        }
+        return response.blob();
+      })
+      .then(function(blob) {
+        loading.classList.remove('visible');
+
+        // Revoke previous result if any
+        if (resultBlobUrl) URL.revokeObjectURL(resultBlobUrl);
+        resultBlobUrl = URL.createObjectURL(blob);
+
+        // Set comparison images
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('compare-original').src = e.target.result;
+        };
+        reader.readAsDataURL(selectedFile);
+
+        document.getElementById('compare-result').src = resultBlobUrl;
+        document.getElementById('btn-download').href = resultBlobUrl;
+
+        // Generate download filename
+        var originalName = selectedFile.name.replace(/\.[^.]+$/, '');
+        document.getElementById('btn-download').download = originalName + '-sans-fond.png';
+
+        comparison.classList.add('visible');
+        btn.disabled = false;
+        lastError = null;
+      })
+      .catch(function(err) {
+        loading.classList.remove('visible');
+        workspace.classList.add('visible');
+        btn.disabled = false;
+        lastError = err.message;
+        showError('Erreur lors du traitement : ' + err.message);
+      });
+    }
+
+    function resetApp() {
+      selectedFile = null;
+      if (resultBlobUrl) {
+        URL.revokeObjectURL(resultBlobUrl);
+        resultBlobUrl = null;
+      }
+      fileInput.value = '';
+      document.getElementById('preview-img').src = '';
+      document.getElementById('compare-original').src = '';
+      document.getElementById('compare-result').src = '';
+      document.getElementById('btn-download').href = '';
+
+      dropzone.style.display = '';
+      features.style.display = '';
+      workspace.classList.remove('visible');
+      loading.classList.remove('visible');
+      comparison.classList.remove('visible');
+      hideError();
+
+      document.getElementById('btn-remove').disabled = false;
+    }
+
+    function showError(msg) {
+      errorMsg.textContent = msg;
+      errorMsg.classList.add('visible');
+    }
+
+    function hideError() {
+      errorMsg.textContent = '';
+      errorMsg.classList.remove('visible');
+    }
+
+    // Bug report
+    function toggleBugModal() {
+      document.getElementById('bug-modal').classList.toggle('visible');
+    }
+
+    function submitBugReport() {
+      var desc = document.getElementById('bug-description').value.trim();
+      if (!desc) { document.getElementById('bug-description').placeholder = 'Veuillez decrire le probleme...'; return; }
+      fetch('/api/report-bug', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          error: lastError || 'user-report',
+          comment: desc,
+          userAgent: navigator.userAgent
+        }),
+      }).then(function() {
+        document.getElementById('bug-modal').innerHTML = '<p style="color:#4caf50;text-align:center;padding:1rem;font-size:13px">Merci ! Votre rapport a ete envoye.</p>';
+        setTimeout(function() {
+          document.getElementById('bug-modal').classList.remove('visible');
+          document.getElementById('bug-modal').innerHTML = '<h3>&#128027; Signaler un probleme</h3><textarea id="bug-description" placeholder="Decrivez ce qui ne fonctionne pas..."></textarea><div class="bug-modal-info">Votre rapport sera envoye avec des informations techniques pour nous aider a reproduire le probleme.</div><button onclick="submitBugReport()">Envoyer le rapport</button>';
+        }, 2000);
+      }).catch(function() {});
+    }
+  </script>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <button class="bottom-btn bottom-btn-bug" onclick="toggleBugModal()">&#128027; Signaler un bug</button>
+    <a class="bottom-btn bottom-btn-kofi" href="https://ko-fi.com/purvanas" target="_blank" rel="noopener">&#9749; Soutenir</a>
+  </div>
+
+  <!-- BUG REPORT MODAL -->
+  <div class="bug-modal" id="bug-modal">
+    <h3>&#128027; Signaler un probleme</h3>
+    <textarea id="bug-description" placeholder="Decrivez ce qui ne fonctionne pas..."></textarea>
+    <div class="bug-modal-info">Votre rapport sera envoye avec des informations techniques pour nous aider a reproduire le probleme.</div>
+    <button onclick="submitBugReport()">Envoyer le rapport</button>
+  </div>
+<!-- LEGAL FOOTER -->
+<div id="legal-links" style="text-align:center;padding:1rem;font-size:.65rem">
+<a href="#" onclick="document.getElementById('legal-modal').style.display='flex';return false" style="color:#444;text-decoration:none">Mentions legales</a> · 
+<a href="#" onclick="document.getElementById('privacy-modal').style.display='flex';return false" style="color:#444;text-decoration:none">Politique de confidentialite</a> · 
+<a href="mailto:contact@purvanas.fr" style="color:#444;text-decoration:none">Contact</a>
+</div>
+
+<!-- LEGAL MODAL -->
+<div id="legal-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:99999;align-items:center;justify-content:center" onclick="if(event.target===this)this.style.display='none'">
+<div style="background:#141414;border:1px solid #2a2a2a;border-radius:12px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;color:#ccc;font-size:.8rem;line-height:1.6">
+<h2 style="font-size:1rem;margin-bottom:12px;color:#fff">Mentions legales</h2>
+<p><strong>Editeur :</strong> Particulier, a titre personnel.<br><strong>Contact :</strong> contact@purvanas.fr<br><strong>Hebergement :</strong> Serveur auto-heberge en France, derriere Cloudflare.</p>
+<h3 style="font-size:.85rem;margin:12px 0 6px;color:#ddd">Description du service</h3>
+<p>Ce site propose des outils web gratuits (telechargement, conversion, partage de fichiers, generation de QR codes, edition photo, outils PDF, suppression de fond). Aucun compte utilisateur n est requis.</p>
+<h3 style="font-size:.85rem;margin:12px 0 6px;color:#ddd">Responsabilite</h3>
+<p>Conformement a l article 6 de la LCEN (Loi n 2004-575 du 21 juin 2004), l hebergeur n est pas responsable des contenus traites par les utilisateurs. Tout contenu signale comme illicite sera traite promptement.</p>
+<h3 style="font-size:.85rem;margin:12px 0 6px;color:#ddd">Propriete intellectuelle</h3>
+<p>Les outils sont open source et disponibles sur GitHub. Les fichiers traites par les utilisateurs restent leur propriete.</p>
+<button onclick="this.parentElement.parentElement.style.display='none'" style="margin-top:16px;padding:8px 20px;background:#2a2a2a;color:#ccc;border:none;border-radius:8px;cursor:pointer;font-size:.8rem">Fermer</button>
+</div>
+</div>
+
+<!-- PRIVACY MODAL -->
+<div id="privacy-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:99999;align-items:center;justify-content:center" onclick="if(event.target===this)this.style.display='none'">
+<div style="background:#141414;border:1px solid #2a2a2a;border-radius:12px;padding:24px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;color:#ccc;font-size:.8rem;line-height:1.6">
+<h2 style="font-size:1rem;margin-bottom:12px;color:#fff">Politique de confidentialite</h2>
+<h3 style="font-size:.85rem;margin:12px 0 6px;color:#ddd">Donnees collectees</h3>
+<p>Ce site ne collecte aucune donnee personnelle directement. Aucun compte utilisateur, aucun formulaire d inscription, aucun cookie propre.</p>
+<h3 style="font-size:.85rem;margin:12px 0 6px;color:#ddd">Mesure d audience</h3>
+<p>Le code public n integre aucun service de mesure d audience ni script publicitaire. Une instance peut en ajouter dans sa propre configuration, sous la responsabilite de son exploitant.</p>
+<h3 style="font-size:.85rem;margin:12px 0 6px;color:#ddd">Fichiers traites</h3>
+<p>Les fichiers que vous uploadez (images, videos, PDF) sont traites temporairement puis supprimes automatiquement. Aucun fichier n est conserve de maniere permanente. Pour les outils cote client (QR Generator, PDF Tools), vos fichiers ne quittent jamais votre navigateur.</p>
+<h3 style="font-size:.85rem;margin:12px 0 6px;color:#ddd">Logs serveur</h3>
+<p>Les adresses IP sont enregistrees dans les logs du serveur web et conservees conformement au decret n 2011-219 du 25 fevrier 2011. Ces logs ne sont pas partages avec des tiers.</p>
+<h3 style="font-size:.85rem;margin:12px 0 6px;color:#ddd">Contact</h3>
+<p>Pour toute question relative a vos donnees : <a href="mailto:contact@purvanas.fr" style="color:#7c4dff">contact@purvanas.fr</a></p>
+<button onclick="this.parentElement.parentElement.style.display='none'" style="margin-top:16px;padding:8px 20px;background:#2a2a2a;color:#ccc;border:none;border-radius:8px;cursor:pointer;font-size:.8rem">Fermer</button>
+</div>
+</div>
+<script src="/i18n.js"></script>
+<script src="/en.js"></script>
+</body>
+</html>
