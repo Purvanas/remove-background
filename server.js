@@ -28,7 +28,10 @@ function logError(type, error, extra) {
   const entry = { time: new Date().toISOString(), type, error: String(error || "Unknown error").slice(0, 500), ...extra };
   errorLogs.push(entry);
   if (errorLogs.length > 500) errorLogs = errorLogs.slice(-500);
-  try { fs.writeFileSync(ERRORS_FILE, JSON.stringify(errorLogs, null, 2)); } catch { /* logging must not break requests */ }
+  try {
+    fs.writeFileSync(ERRORS_FILE, JSON.stringify(errorLogs, null, 2), { mode: 0o600 });
+    fs.chmodSync(ERRORS_FILE, 0o600);
+  } catch { /* logging must not break requests */ }
 }
 
 function safeUnlink(file) { fs.unlink(file, () => {}); }
